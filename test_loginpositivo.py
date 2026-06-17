@@ -29,17 +29,14 @@ class TestLoginpositivo():
   def setup_method(self, method):
     options = Options()
     self.driver = webdriver.Chrome(options=options)
+    self.vars = ()
+    self.driver.implicitly_wait(10)
     self.driver.execute_cdp_cmd("Network.enable", {})
     self.driver.execute_cdp_cmd("Network.setBlockedURLs", {
         "urls": self.AD_BLOCK_LIST
+  
     })
 
-
-  def setup_method(self, method):
-    self.driver = webdriver.Chrome()
-    self.vars = {}
-    self.driver.implicitly_wait(10)
-  
 
   def teardown_method(self, method):
     self.driver.quit()
